@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bge0fgpvrh8k"]
+
+[ext_resource type="Script" uid="uid://cqf5h8hfm77rn" path="res://player.gd" id="1_xhfnw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0rwas"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rwas"]
+
+[node name="Player" type="CharacterBody3D" unique_id=551876888]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_xhfnw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1219105471]
+mesh = SubResource("CapsuleMesh_0rwas")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1925763138]
+shape = SubResource("CapsuleShape3D_0rwas")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2113553695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=271824811]
+transform = Transform3D(1, 0, 0, 0, 0.95105654, -0.309017, 0, 0.309017, 0.95105654, 0, 0, 0)
+target_position = Vector3(0, -1, -3)
+collision_mask = 7
+
+[node name="HoldPosition" type="Marker3D" parent="Camera3D" unique_id=2032085039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.099999994, -0.5)

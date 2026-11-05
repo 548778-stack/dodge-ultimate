@@ -95,7 +95,7 @@ shape = SubResource("BoxShape3D_mc20k")
 
 [node name="BallStartingPositions" type="Node3D" parent="." unique_id=1071528807]
 
-[node name="BallSpawner" type="Marker3D" parent="BallStartingPositions" unique_id=587006748]
+[node name="new_ball" type="Marker3D" parent="BallStartingPositions" unique_id=587006748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 
 [node name="BallSpawner6" type="Marker3D" parent="BallStartingPositions" unique_id=1973319114]

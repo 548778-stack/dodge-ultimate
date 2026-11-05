@@ -1,25 +1,17 @@
 [gd_scene format=3 uid="uid://d1su38k5jbpd6"]
 
-[ext_resource type="Texture2D" uid="uid://bvxto227xu16a" path="res://dc8cee74-918d-461d-a662-33427da06161.jpg" id="1_gk6bx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lww6v"]
-albedo_texture = ExtResource("1_gk6bx")
+[sub_resource type="SphereShape3D" id="SphereShape3D_pa54t"]
+radius = 0.3
 
 [sub_resource type="SphereMesh" id="SphereMesh_pa54t"]
-material = SubResource("StandardMaterial3D_lww6v")
+radius = 0.3
+height = 0.6
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_pa54t"]
-radius = 0.35
+[node name="Ball" type="RigidBody3D" unique_id=2105171547]
 
-[node name="Ball" type="Area3D" unique_id=934719411]
-disable_mode = 2
-collision_layer = 64
-collision_mask = 5
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=441327155]
-transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
-mesh = SubResource("SphereMesh_pa54t")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1906606312]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=47216054]
 shape = SubResource("SphereShape3D_pa54t")
-debug_color = Color(0.83704245, 0.20573696, 0.8053471, 0.41960785)
+debug_color = Color(0.83026254, 0.0014957113, 0.9500213, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1149316060]
+mesh = SubResource("SphereMesh_pa54t")

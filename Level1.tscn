@@ -2,13 +2,15 @@
 
 [ext_resource type="Script" uid="uid://r4tyn7qgg1np" path="res://level_1.gd" id="1_cove1"]
 [ext_resource type="PackedScene" uid="uid://bge0fgpvrh8k" path="res://Player.tscn" id="1_kyxg0"]
-[ext_resource type="Texture2D" uid="uid://jmeo0xgpxr82" path="res://6b6751ef-2274-4ea7-a243-d94efde18e98.jpg" id="2_cove1"]
+[ext_resource type="Texture2D" uid="uid://covp1ylxa2wub" path="res://b0aefb33-fd66-4022-9b40-fc2cfd5a0856.jpg" id="2_cove1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cove1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwyiq"]
 albedo_texture = ExtResource("2_cove1")
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(2, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dn5ey"]
-material = SubResource("StandardMaterial3D_cove1")
+material = SubResource("StandardMaterial3D_dwyiq")
 size = Vector3(45, 1, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kyxg0"]
@@ -95,7 +97,7 @@ shape = SubResource("BoxShape3D_mc20k")
 
 [node name="BallStartingPositions" type="Node3D" parent="." unique_id=1071528807]
 
-[node name="new_ball" type="Marker3D" parent="BallStartingPositions" unique_id=587006748]
+[node name="BallSpawner1" type="Marker3D" parent="BallStartingPositions" unique_id=587006748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 
 [node name="BallSpawner6" type="Marker3D" parent="BallStartingPositions" unique_id=1973319114]

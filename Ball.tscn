@@ -11,11 +11,18 @@ radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41u45"]
 albedo_texture = ExtResource("1_x8fbi")
+emission_enabled = true
+emission = Color(0.31764707, 0, 0, 1)
+emission_energy_multiplier = 10.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_cbx31"]
 material = SubResource("StandardMaterial3D_41u45")
 radius = 0.3
 height = 0.6
+
+[sub_resource type="Environment" id="Environment_x8fbi"]
+glow_enabled = true
+glow_hdr_threshold = 0.5
 
 [node name="Ball" type="RigidBody3D" unique_id=6337348]
 mass = 0.5
@@ -29,3 +36,10 @@ shape = SubResource("SphereShape3D_cbx31")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=819656900]
 mesh = SubResource("SphereMesh_cbx31")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1367473561]
+environment = SubResource("Environment_x8fbi")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=160680309]
+light_color = Color(1, 0, 0, 1)
+light_energy = 3.0

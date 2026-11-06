@@ -16,6 +16,21 @@ current = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1740002008]
 target_position = Vector3(0, 0, -3)
+debug_shape_thickness = 5
 
 [node name="HoldPosition" type="Node3D" parent="Camera3D" unique_id=292621595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37352246, -0.0916363, -0.589035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37352246, -0.0916363, -0.891404)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1663450898]
+
+[node name="ChargeBar" type="ProgressBar" parent="CanvasLayer" unique_id=1766090979]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.96700007
+anchor_bottom = 0.5
+offset_left = 995.0
+offset_top = -302.0
+offset_right = 26.01587
+offset_bottom = -275.0
+grow_horizontal = 0
+grow_vertical = 2

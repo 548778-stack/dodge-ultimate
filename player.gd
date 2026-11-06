@@ -41,53 +41,49 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func try_pickup_ball() -> void:
-	# Refresh the ray using its CURRENT transform before reading the result.
-	# Without this, is_colliding() returns data from the last physics tick,
-	# which is stale right after a mouse-look rotation.
+	# Force the ray to update exactly at the moment we press the button
 	interaction_ray.force_raycast_update()
-
+	
 	print("Ray colliding: ", interaction_ray.is_colliding(), " | Collider: ", interaction_ray.get_collider())
-
-	if not interaction_ray.is_colliding():
-		return
-
-	var object_seen = interaction_ray.get_collider()
-
-	if not object_seen is RigidBody3D:
-		return
-
-	held_ball = object_seen
-
-	# Freeze before reparenting so physics doesn't fight the move.
-	held_ball.freeze = true
-	held_ball.linear_velocity = Vector3.ZERO
-	held_ball.angular_velocity = Vector3.ZERO
-
-	if held_ball.get_parent():
-		held_ball.get_parent().remove_child(held_ball)
-
-	hold_position.add_child(held_ball)
-	held_ball.position = Vector3.ZERO
-	held_ball.rotation = Vector3.ZERO
-	print("Successfully picked up the ball!")
+	
+	if interaction_ray.is_colliding():
+		var object_seen = interaction_ray.get_collider()
+		
+		if object_seen is RigidBody3D:
+			held_ball = object_seen
+			
+			# Freeze physics before moving it
+			held_ball.freeze = true
+			held_ball.linear_velocity = Vector3.ZERO
+			held_ball.angular_velocity = Vector3.ZERO
+			
+			# Reparent to the hand
+			if held_ball.get_parent():
+				held_ball.get_parent().remove_child(held_ball)
+			hold_position.add_child(held_ball)
+			
+			# Snap to hand center
+			held_ball.position = Vector3.ZERO
+			held_ball.rotation = Vector3.ZERO
+			print("Successfully picked up the ball!")
 
 func throw_ball() -> void:
 	if held_ball == null:
 		return
-
+		
 	var ball_to_throw = held_ball
 	held_ball = null
-
-	# Detach from hand, attach back to the world.
+	
+	# Reparent back to the level
 	hold_position.remove_child(ball_to_throw)
 	get_parent().add_child(ball_to_throw)
-
-	# Snap to where the hand marker currently is.
+	
+	# Match current hand position
 	ball_to_throw.global_position = hold_position.global_position
-
-	# Unfreeze BEFORE applying velocity, otherwise the impulse is discarded.
+	
+	# Unfreeze so physics works again
 	ball_to_throw.freeze = false
-
+	
+	# Throw it forward
 	var throw_direction = -camera.global_transform.basis.z.normalized()
-	var throw_force = 25.0
-	ball_to_throw.linear_velocity = throw_direction * throw_force
+	ball_to_throw.linear_velocity = throw_direction * 25.0

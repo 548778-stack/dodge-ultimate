@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://d2kxyjcnuargs"]
+
+[ext_resource type="Texture2D" uid="uid://covp1ylxa2wub" path="res://b0aefb33-fd66-4022-9b40-fc2cfd5a0856.jpg" id="1_3hls8"]
+[ext_resource type="Script" uid="uid://r4tyn7qgg1np" path="res://level_1.gd" id="1_hbghi"]
+[ext_resource type="PackedScene" uid="uid://bge0fgpvrh8k" path="res://player.tscn" id="3_hn12h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilcil"]
+size = Vector3(45, 1, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbghi"]
+albedo_texture = ExtResource("1_3hls8")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ilcil"]
+material = SubResource("StandardMaterial3D_hbghi")
+size = Vector2(45, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hls8"]
+size = Vector3(1, 25, 25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3hls8"]
+size = Vector2(25, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbghi"]
+size = Vector3(45, 25, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hn12h"]
+size = Vector2(45, 25)
+
+[node name="Level1" type="Node3D" unique_id=997525223]
+script = ExtResource("1_hbghi")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1924565075]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=33812403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ilcil")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1201805939]
+mesh = SubResource("PlaneMesh_ilcil")
+
+[node name="WallBoundaries" type="Node3D" parent="." unique_id=935418290]
+
+[node name="BackWall" type="StaticBody3D" parent="WallBoundaries" unique_id=1896105066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBoundaries/BackWall" unique_id=581912135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0)
+shape = SubResource("BoxShape3D_3hls8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallBoundaries/BackWall" unique_id=1833358291]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 11.5, 0)
+mesh = SubResource("PlaneMesh_3hls8")
+
+[node name="FrontWall" type="StaticBody3D" parent="WallBoundaries" unique_id=1184684275]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBoundaries/FrontWall" unique_id=1759602160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0)
+shape = SubResource("BoxShape3D_3hls8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallBoundaries/FrontWall" unique_id=153698550]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 11.5, 0)
+mesh = SubResource("PlaneMesh_3hls8")
+
+[node name="LeftWall" type="StaticBody3D" parent="WallBoundaries" unique_id=1748396148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 12.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBoundaries/LeftWall" unique_id=2035709565]
+shape = SubResource("BoxShape3D_hbghi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallBoundaries/LeftWall" unique_id=2143817079]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hn12h")
+
+[node name="RightWall" type="StaticBody3D" parent="WallBoundaries" unique_id=682733426]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 11.5, -12.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBoundaries/RightWall" unique_id=379393053]
+shape = SubResource("BoxShape3D_hbghi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallBoundaries/RightWall" unique_id=1359962624]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hn12h")
+
+[node name="BallStartingPositions" type="Node3D" parent="." unique_id=46251651]
+
+[node name="Marker3D" type="Marker3D" parent="BallStartingPositions" unique_id=534173803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="BallStartingPositions" unique_id=870097700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+
+[node name="Marker3D3" type="Marker3D" parent="BallStartingPositions" unique_id=868796431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 4)
+
+[node name="Marker3D4" type="Marker3D" parent="BallStartingPositions" unique_id=588208724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+
+[node name="Marker3D5" type="Marker3D" parent="BallStartingPositions" unique_id=1167886317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
+
+[node name="Marker3D6" type="Marker3D" parent="BallStartingPositions" unique_id=584774415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
+
+[node name="Marker3D7" type="Marker3D" parent="BallStartingPositions" unique_id=984022032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6)
+
+[node name="Player" parent="." unique_id=1058905890 instance=ExtResource("3_hn12h")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=559095136]
+transform = Transform3D(-4.371139e-08, -0.70710677, 0.70710677, 0, 0.70710677, 0.70710677, -1, 3.090862e-08, -3.090862e-08, 10, 25, 0)

@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bvxto227xu16a" path="res://dc8cee74-918d-461d-a662-33427da06161.jpg" id="1_x8fbi"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x8fbi"]
+friction = 0.3
+bounce = 0.8
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_cbx31"]
 radius = 0.3
 
@@ -14,7 +18,11 @@ radius = 0.3
 height = 0.6
 
 [node name="Ball" type="RigidBody3D" unique_id=6337348]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_x8fbi")
 continuous_cd = true
+linear_damp = 0.1
+angular_damp = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1717446292]
 shape = SubResource("SphereShape3D_cbx31")

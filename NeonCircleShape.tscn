@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://hxmylvmbk4la"]
+
+[ext_resource type="Script" uid="uid://cvid4778t7nfe" path="res://NeonShapes.gd" id="1_4qerk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lq513"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq513"]
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_4qerk"]
+material = SubResource("StandardMaterial3D_lq513")
+
+[node name="NeonCircleLight" type="RigidBody3D" unique_id=1685404272 groups=["floating_lights"]]
+mass = 0.5
+gravity_scale = 0.0
+linear_damp = 1.5
+angular_damp = 2.0
+script = ExtResource("1_4qerk")
+max_radius = 4.0
+max_speed = 40.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2053609497]
+shape = SubResource("SphereShape3D_lq513")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1185673992]
+mesh = SubResource("SphereMesh_4qerk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=879281531]
+light_color = Color(0, 1, 1, 1)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_size = 2.5
+omni_range = 2.5
+omni_shadow_mode = 0

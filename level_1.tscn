@@ -1,30 +1,87 @@
 [gd_scene format=3 uid="uid://d2kxyjcnuargs"]
 
-[ext_resource type="Texture2D" uid="uid://covp1ylxa2wub" path="res://b0aefb33-fd66-4022-9b40-fc2cfd5a0856.jpg" id="1_3hls8"]
 [ext_resource type="Script" uid="uid://r4tyn7qgg1np" path="res://level_1.gd" id="1_hbghi"]
 [ext_resource type="PackedScene" uid="uid://bge0fgpvrh8k" path="res://player.tscn" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://hxmylvmbk4la" path="res://NeonCircleShape.tscn" id="4_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://cihd1td4k5ewq" path="res://NeonSquareShape.tscn" id="4_rka8t"]
+[ext_resource type="PackedScene" uid="uid://p0m17yfj4cct" path="res://NeonTriangleShape.tscn" id="5_rka8t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ilcil"]
 size = Vector3(45, 1, 25)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbghi"]
-albedo_texture = ExtResource("1_3hls8")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihfcg"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ilcil"]
-material = SubResource("StandardMaterial3D_hbghi")
+material = SubResource("StandardMaterial3D_ihfcg")
+size = Vector2(45, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rka8t"]
+albedo_color = Color(0.6, 0, 1, 1)
+emission_enabled = true
+emission = Color(0.6, 0, 1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_5hph3"]
+material = SubResource("StandardMaterial3D_rka8t")
+size = Vector3(45, 1, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rr72"]
+albedo_color = Color(0, 1, 1, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_gyffv"]
+material = SubResource("StandardMaterial3D_5rr72")
+size = Vector3(10, 1, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyffv"]
+albedo_color = Color(0, 1, 1, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1pe0h"]
+material = SubResource("StandardMaterial3D_gyffv")
+size = Vector3(12.25, 1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hn12h"]
+size = Vector3(45, 1, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hph3"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ihfcg"]
+material = SubResource("StandardMaterial3D_5hph3")
 size = Vector2(45, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3hls8"]
 size = Vector3(1, 25, 25)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7kpp"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_3hls8"]
+material = SubResource("StandardMaterial3D_j7kpp")
 size = Vector2(25, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbghi"]
 size = Vector3(45, 25, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjebc"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_hn12h"]
+material = SubResource("StandardMaterial3D_bjebc")
 size = Vector2(45, 25)
+
+[sub_resource type="Environment" id="Environment_ihfcg"]
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.45840502, 0.45840508, 0.45840502, 1)
+volumetric_fog_emission = Color(0.096204735, 0.09620475, 0.096204735, 1)
 
 [node name="Level1" type="Node3D" unique_id=997525223]
 script = ExtResource("1_hbghi")
@@ -38,6 +95,60 @@ shape = SubResource("BoxShape3D_ilcil")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1201805939]
 mesh = SubResource("PlaneMesh_ilcil")
 
+[node name="WhiteNeonStripes" type="MeshInstance3D" parent="Floor" unique_id=120260905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49, -11.75)
+mesh = SubResource("BoxMesh_5hph3")
+
+[node name="WhiteNeonStripes2" type="MeshInstance3D" parent="Floor" unique_id=642943050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49, 11.5)
+mesh = SubResource("BoxMesh_5hph3")
+
+[node name="WhiteNeonStripes3" type="MeshInstance3D" parent="Floor" unique_id=758706194]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 22.5, -0.49, 0)
+mesh = SubResource("BoxMesh_5hph3")
+
+[node name="WhiteNeonStripes4" type="MeshInstance3D" parent="Floor" unique_id=847128691]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -22.5, -0.49, 0)
+mesh = SubResource("BoxMesh_5hph3")
+
+[node name="WhiteNeonStripes5" type="MeshInstance3D" parent="Floor" unique_id=1545261904]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.49, 0)
+mesh = SubResource("BoxMesh_5hph3")
+
+[node name="NeonCyanStripes" type="MeshInstance3D" parent="Floor" unique_id=378677964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.49, 6)
+mesh = SubResource("BoxMesh_gyffv")
+
+[node name="NeonCyanStripes2" type="MeshInstance3D" parent="Floor" unique_id=619314314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.49, -6)
+mesh = SubResource("BoxMesh_gyffv")
+
+[node name="NeonCyanStripes4" type="MeshInstance3D" parent="Floor" unique_id=1693449259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.49, 6)
+mesh = SubResource("BoxMesh_gyffv")
+
+[node name="NeonCyanStripes5" type="MeshInstance3D" parent="Floor" unique_id=827900588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.49, -6)
+mesh = SubResource("BoxMesh_gyffv")
+
+[node name="NeonCyanStripes3" type="MeshInstance3D" parent="Floor" unique_id=188912865]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, -0.49, 0)
+mesh = SubResource("BoxMesh_1pe0h")
+
+[node name="NeonCyanStripes6" type="MeshInstance3D" parent="Floor" unique_id=948942126]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, -0.49, 0)
+mesh = SubResource("BoxMesh_1pe0h")
+
+[node name="celling" type="StaticBody3D" parent="." unique_id=1364551914]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="celling" unique_id=1272246194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.5, 0)
+shape = SubResource("BoxShape3D_hn12h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="celling" unique_id=956766233]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 24, 0)
+mesh = SubResource("PlaneMesh_ihfcg")
+
 [node name="WallBoundaries" type="Node3D" parent="." unique_id=935418290]
 
 [node name="BackWall" type="StaticBody3D" parent="WallBoundaries" unique_id=1896105066]
@@ -48,7 +159,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0)
 shape = SubResource("BoxShape3D_3hls8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallBoundaries/BackWall" unique_id=1833358291]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 11.5, 0)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.00011062622, 11.5, -0.00709033)
 mesh = SubResource("PlaneMesh_3hls8")
 
 [node name="FrontWall" type="StaticBody3D" parent="WallBoundaries" unique_id=1184684275]
@@ -63,13 +174,14 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1
 mesh = SubResource("PlaneMesh_3hls8")
 
 [node name="LeftWall" type="StaticBody3D" parent="WallBoundaries" unique_id=1748396148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 12.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 11, 14)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallBoundaries/LeftWall" unique_id=2035709565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -1)
 shape = SubResource("BoxShape3D_hbghi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallBoundaries/LeftWall" unique_id=2143817079]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.9934826, 1.5215893, -1.7303047)
 mesh = SubResource("PlaneMesh_hn12h")
 
 [node name="RightWall" type="StaticBody3D" parent="WallBoundaries" unique_id=682733426]
@@ -105,16 +217,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
 [node name="Marker3D7" type="Marker3D" parent="BallStartingPositions" unique_id=984022032]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6)
 
+[node name="NeonLightsContainer" type="Node3D" parent="." unique_id=1495272786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="NeonCircleLight" parent="NeonLightsContainer" unique_id=1685404272 instance=ExtResource("4_ihfcg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4213877, 0, 2.8793917)
+max_speed = 15.0
+
+[node name="NeonTriangleLight" parent="NeonLightsContainer" unique_id=1838059627 instance=ExtResource("5_rka8t")]
+transform = Transform3D(-0.3852287, 0.3912244, -0.83578897, -0.7615446, -0.6462973, 0.04848293, -0.5212, 0.65516704, 0.5469067, 2.1336274, 6.283348, -5.8536797)
+mass = 0.5
+gravity_scale = 0.0
+max_speed = 15.0
+
+[node name="NeonSquareLight" parent="NeonLightsContainer" unique_id=32353828 instance=ExtResource("4_rka8t")]
+transform = Transform3D(0.8535533, -0.14644662, 0.49999997, 0.49999997, 0.49999997, -0.70710677, -0.14644662, 0.8535533, 0.49999997, -3.2589622, 3.073927, 4.951719)
+max_speed = 15.0
+
 [node name="Player" parent="." unique_id=1058905890 instance=ExtResource("3_hn12h")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.28201, 0, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1141261613]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 25, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 23.5, 0)
 light_color = Color(0, 0.39215687, 1, 1)
 light_energy = 5.0
 light_indirect_energy = 5.0
 light_volumetric_fog_energy = 10.0
-shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 60.0
 spot_angle = 90.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=533602089]
+environment = SubResource("Environment_ihfcg")

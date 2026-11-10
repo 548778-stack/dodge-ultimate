@@ -17,14 +17,18 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera = $Camera3D
 @onready var interaction_ray = $Camera3D/RayCast3D
 @onready var hold_position = $Camera3D/HoldPosition
-# Link the UI element
+
 @onready var charge_bar: ProgressBar = $CanvasLayer/ChargeBar 
+@onready var crosshair: ColorRect = $CanvasLayer/CenterContainer/Crosshair
+
+var color_default = Color(1, 1, 1, 0.5)
+var color_hover = Color(0, 1, 1, 1)
 
 var held_ball: RigidBody3D = null
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	charge_bar.hide() # Hide the bar when the game starts
+	charge_bar.hide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -38,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			is_charging = true
 			current_charge = 0.0
-			charge_bar.show() # Show the bar when we start charging
+			charge_bar.show()
 			
 	if event.is_action_released("pick_or_throw"):
 		if is_charging and held_ball != null:
@@ -54,12 +58,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 
-	# Update the Charge Bar while holding the button
 	if is_charging:
 		current_charge += delta
 		current_charge = min(current_charge, max_charge_time)
-		
-		# Convert our time (0.0 to 1.0) to a percentage (0 to 100) for the UI
 		var charge_percent = (current_charge / max_charge_time) * 100
 		charge_bar.value = charge_percent
 
@@ -75,10 +76,22 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	# Update Crosshair Color (Now ignores the floating lights!)
+	if interaction_ray.is_colliding() and held_ball == null:
+		var object_seen = interaction_ray.get_collider()
+		if object_seen is RigidBody3D and not object_seen.is_in_group("floating_lights"):
+			crosshair.color = color_hover
+		else:
+			crosshair.color = color_default
+	else:
+		crosshair.color = color_default
+
+	# Push Logic (Player pushing balls)
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		
+		# Also added the group check here so you can push the floating lights around with your body!
 		if collider is RigidBody3D and collider != held_ball:
 			var push_direction = -collision.get_normal()
 			collider.sleeping = false
@@ -90,7 +103,8 @@ func try_pickup_ball() -> void:
 	if interaction_ray.is_colliding():
 		var object_seen = interaction_ray.get_collider()
 		
-		if object_seen is RigidBody3D:
+		# ONLY pick it up if it's a RigidBody3D AND it's NOT a floating light
+		if object_seen is RigidBody3D and not object_seen.is_in_group("floating_lights"):
 			held_ball = object_seen
 			
 			held_ball.freeze = true
@@ -107,14 +121,13 @@ func try_pickup_ball() -> void:
 			
 			held_ball.position = Vector3.ZERO
 			held_ball.rotation = Vector3.ZERO
-			print("Successfully picked up the ball!")
 
 func charge_throw() -> void:
 	if held_ball == null:
 		return
 		
 	is_charging = false
-	charge_bar.hide() # Hide the bar when we throw
+	charge_bar.hide() 
 	
 	var charge_percent = current_charge / max_charge_time
 	var final_force = lerp(min_throw_force, max_throw_force, charge_percent)
@@ -135,7 +148,6 @@ func charge_throw() -> void:
 	var throw_direction = -camera.global_transform.basis.z.normalized()
 	
 	ball_to_throw.linear_velocity = throw_direction * final_force
-	print("Threw ball with force: ", final_force)
 	
 	current_charge = 0.0
 	charge_bar.value = 0.0

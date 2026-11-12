@@ -17,7 +17,6 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera = $Camera3D
 @onready var interaction_ray = $Camera3D/RayCast3D
 @onready var hold_position = $Camera3D/HoldPosition
-@onready var anim_player: AnimationPlayer = $PlayerVisual/AnimationPlayer
 
 @onready var charge_bar: ProgressBar = $CanvasLayer/ChargeBar 
 @onready var crosshair: ColorRect = $CanvasLayer/CenterContainer/Crosshair
@@ -26,7 +25,6 @@ var color_default = Color(1, 1, 1, 0.5)
 var color_hover = Color(0, 1, 1, 1)
 
 var held_ball: RigidBody3D = null
-var was_on_floor := is_on_floor()
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -57,10 +55,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	if Input.is_action_just_pressed("jump") and was_on_floor:
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
-		play_animation(&"Jump")
-	
+
 	if is_charging:
 		current_charge += delta
 		current_charge = min(current_charge, max_charge_time)
@@ -99,13 +96,6 @@ func _physics_process(delta: float) -> void:
 			var push_direction = -collision.get_normal()
 			collider.sleeping = false
 			collider.apply_central_impulse(push_direction * push_force)
-			
-		if not is_on_floor():
-			play_animation(&"Jump")
-		elif Vector2(velocity.x, velocity.z).length() > 0.1:
-			play_animation(&"Walk")
-		else:
-			play_animation(&"Idle")
 
 func try_pickup_ball() -> void:
 	interaction_ray.force_raycast_update()
@@ -161,8 +151,3 @@ func charge_throw() -> void:
 	
 	current_charge = 0.0
 	charge_bar.value = 0.0
-
-func play_animation(anim_name: StringName) -> void:
-	if anim_player.has_animation(anim_name) \
-	and anim_player.current_animation != anim_name:
-		anim_player.play(anim_name)

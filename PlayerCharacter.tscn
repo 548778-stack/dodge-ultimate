@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://bthtl6hw65l0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n04vi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uf0uw"]
+size = Vector3(0.75, 0.5, 0.45)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dpbyw"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ewjwe"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.35
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n04vi"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_uf0uw"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uf0uw"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.35
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dpbyw"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_n04vi"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_n04vi"]
+size = Vector3(0.6, 0.1, 0.4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jkfty"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ew46a"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.35
+
+[sub_resource type="PrismMesh" id="PrismMesh_n04vi"]
+left_to_right = 0.0
+size = Vector3(0.3, 0.1, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5lgxq"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p04tm"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.35
+
+[sub_resource type="PrismMesh" id="PrismMesh_uf0uw"]
+left_to_right = 0.0
+size = Vector3(0.3, 0.1, 0.1)
+
+[node name="PlayerModel" type="RigidBody3D" unique_id=318638382]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1646236699]
+shape = SubResource("CapsuleShape3D_n04vi")
+
+[node name="Visuals" type="Node3D" parent="CollisionShape3D" unique_id=1371610993]
+
+[node name="Torso" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=126345206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34253842, 0)
+mesh = SubResource("BoxMesh_uf0uw")
+
+[node name="Head" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=629543015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+mesh = SubResource("SphereMesh_dpbyw")
+
+[node name="UpperRightArm" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=1197171040]
+transform = Transform3D(-0.00059339404, 0.9999999, 0, -0.9999999, -0.00059339404, 0, 0, 0, 1, -0.585, 0.45, 0)
+mesh = SubResource("CylinderMesh_ewjwe")
+
+[node name="LowerRightArm" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperRightArm" unique_id=1740085797]
+transform = Transform3D(1.0000012, -5.9604645e-08, 0, 5.9604645e-08, 1.0000012, 0, 0, 0, 1, 0, -0.35, 0)
+mesh = SubResource("CylinderMesh_n04vi")
+
+[node name="RightHand" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperRightArm/LowerRightArm" unique_id=2019612114]
+transform = Transform3D(1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0, 0, 1, 0, -0.26, 0)
+mesh = SubResource("SphereMesh_uf0uw")
+
+[node name="UpperLeftArm" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=1514103032]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.585, 0.45, 0)
+mesh = SubResource("CylinderMesh_uf0uw")
+
+[node name="LowerLeftArm" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperLeftArm" unique_id=674134986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0)
+mesh = SubResource("CylinderMesh_dpbyw")
+
+[node name="LeftHand" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperLeftArm/LowerLeftArm" unique_id=683471175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0)
+mesh = SubResource("SphereMesh_n04vi")
+
+[node name="Hip" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=752316325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012309238, 0)
+mesh = SubResource("BoxMesh_n04vi")
+
+[node name="UpperRightLeg" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=44891646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225, -0.25, 0)
+mesh = SubResource("CylinderMesh_jkfty")
+
+[node name="LowerRightLeg" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperRightLeg" unique_id=831566635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40407646, 0)
+mesh = SubResource("CylinderMesh_ew46a")
+
+[node name="RightFoot" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperRightLeg/LowerRightLeg" unique_id=2066904460]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.25, 0.058)
+mesh = SubResource("PrismMesh_n04vi")
+
+[node name="UpperLeftLeg" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=1600513954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225, -0.25, 0)
+mesh = SubResource("CylinderMesh_5lgxq")
+
+[node name="LowerLeftLeg" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperLeftLeg" unique_id=984567941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+mesh = SubResource("CylinderMesh_p04tm")
+
+[node name="LeftFoot" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperLeftLeg/LowerLeftLeg" unique_id=1902930871]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.25, 0.058)
+mesh = SubResource("PrismMesh_uf0uw")
+
+[node name="SkeletonPhysics" type="Node3D" parent="." unique_id=810099088]

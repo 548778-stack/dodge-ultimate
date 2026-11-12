@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://hxmylvmbk4la" path="res://NeonCircleShape.tscn" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://cihd1td4k5ewq" path="res://NeonSquareShape.tscn" id="4_rka8t"]
 [ext_resource type="PackedScene" uid="uid://p0m17yfj4cct" path="res://NeonTriangleShape.tscn" id="5_rka8t"]
-[ext_resource type="PackedScene" uid="uid://dnnj5fsud56bn" path="res://non_player.tscn" id="6_5hph3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ilcil"]
 size = Vector3(45, 1, 25)
@@ -250,6 +249,3 @@ spot_angle = 90.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=533602089]
 environment = SubResource("Environment_ihfcg")
-
-[node name="NonPlayer" parent="." unique_id=2059229597 instance=ExtResource("6_5hph3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0464115, 0.6150533, 2.171333)

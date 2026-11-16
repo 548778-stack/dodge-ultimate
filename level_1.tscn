@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d2kxyjcnuargs"]
 
 [ext_resource type="Script" uid="uid://r4tyn7qgg1np" path="res://level_1.gd" id="1_hbghi"]
-[ext_resource type="PackedScene" uid="uid://bge0fgpvrh8k" path="res://player.tscn" id="3_hn12h"]
 [ext_resource type="PackedScene" uid="uid://hxmylvmbk4la" path="res://NeonCircleShape.tscn" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://cihd1td4k5ewq" path="res://NeonSquareShape.tscn" id="4_rka8t"]
 [ext_resource type="PackedScene" uid="uid://p0m17yfj4cct" path="res://NeonTriangleShape.tscn" id="5_rka8t"]
@@ -86,6 +85,19 @@ volumetric_fog_emission = Color(0.096204735, 0.09620475, 0.096204735, 1)
 
 [node name="Level1" type="Node3D" unique_id=997525223]
 script = ExtResource("1_hbghi")
+
+[node name="Players" type="Node3D" parent="." unique_id=2054101793]
+
+[node name="PlayerSpawnPoints" type="Node3D" parent="." unique_id=891365096]
+
+[node name="Marker3D" type="Marker3D" parent="PlayerSpawnPoints" unique_id=1804241743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="PlayerSpawnPoints" unique_id=420826463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.5, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1906336317]
+spawn_path = NodePath("../Players")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1924565075]
 
@@ -234,9 +246,6 @@ max_speed = 15.0
 [node name="NeonSquareLight" parent="NeonLightsContainer" unique_id=32353828 instance=ExtResource("4_rka8t")]
 transform = Transform3D(0.8535533, -0.14644662, 0.49999997, 0.49999997, 0.49999997, -0.70710677, -0.14644662, 0.8535533, 0.49999997, -3.2589622, 3.073927, 4.951719)
 max_speed = 15.0
-
-[node name="Player" parent="." unique_id=1058905890 instance=ExtResource("3_hn12h")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.28201, 0, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1141261613]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 23.5, 0)

@@ -3,23 +3,27 @@
 [ext_resource type="Script" uid="uid://cqf5h8hfm77rn" path="res://player.gd" id="1_4flbx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+radius = 0.40771484
 
 [node name="Player" type="CharacterBody3D" unique_id=1058905890]
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527292110]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009887695, 0)
 shape = SubResource("CapsuleShape3D_4flbx")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=279239437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.027763382)
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1564066158]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=279239437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69155633, -0.09071256)
 current = true
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1740002008]
+[node name="FirstPersonArm" type="Node3D" parent="CameraPivot/Camera3D" unique_id=849095469]
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraPivot/Camera3D" unique_id=1740002008]
 target_position = Vector3(0, 0, -3)
 debug_shape_thickness = 5
 
-[node name="HoldPosition" type="Node3D" parent="Camera3D" unique_id=292621595]
+[node name="HoldPosition" type="Node3D" parent="CameraPivot/Camera3D" unique_id=292621595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37352246, -0.0916363, -0.891404)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1663450898]

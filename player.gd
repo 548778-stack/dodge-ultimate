@@ -14,9 +14,9 @@ var is_charging: bool = false
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var camera = $Camera3D
-@onready var interaction_ray = $Camera3D/RayCast3D
-@onready var hold_position = $Camera3D/HoldPosition
+@onready var camera = $CameraPivot/Camera3D
+@onready var interaction_ray = $CameraPivot/Camera3D/RayCast3D
+@onready var hold_position = $CameraPivot/Camera3D/HoldPosition
 
 @onready var charge_bar: ProgressBar = $CanvasLayer/ChargeBar 
 @onready var crosshair: ColorRect = $CanvasLayer/CenterContainer/Crosshair

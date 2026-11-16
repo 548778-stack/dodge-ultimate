@@ -9,6 +9,9 @@ size = Vector3(0.75, 0.5, 0.45)
 radius = 0.15
 height = 0.3
 
+[sub_resource type="BoxMesh" id="BoxMesh_n04vi"]
+size = Vector3(0.6, 0.1, 0.4)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_ewjwe"]
 top_radius = 0.1
 bottom_radius = 0.1
@@ -36,9 +39,6 @@ height = 0.3
 [sub_resource type="SphereMesh" id="SphereMesh_n04vi"]
 radius = 0.1
 height = 0.2
-
-[sub_resource type="BoxMesh" id="BoxMesh_n04vi"]
-size = Vector3(0.6, 0.1, 0.4)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_jkfty"]
 top_radius = 0.1
@@ -69,6 +69,7 @@ left_to_right = 0.0
 size = Vector3(0.3, 0.1, 0.1)
 
 [node name="PlayerModel" type="RigidBody3D" unique_id=318638382]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1646236699]
 shape = SubResource("CapsuleShape3D_n04vi")
@@ -82,6 +83,10 @@ mesh = SubResource("BoxMesh_uf0uw")
 [node name="Head" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=629543015]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 mesh = SubResource("SphereMesh_dpbyw")
+
+[node name="Hip" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=752316325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012309238, 0)
+mesh = SubResource("BoxMesh_n04vi")
 
 [node name="UpperRightArm" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=1197171040]
 transform = Transform3D(-0.00059339404, 0.9999999, 0, -0.9999999, -0.00059339404, 0, 0, 0, 1, -0.585, 0.45, 0)
@@ -106,10 +111,6 @@ mesh = SubResource("CylinderMesh_dpbyw")
 [node name="LeftHand" type="MeshInstance3D" parent="CollisionShape3D/Visuals/UpperLeftArm/LowerLeftArm" unique_id=683471175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0)
 mesh = SubResource("SphereMesh_n04vi")
-
-[node name="Hip" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=752316325]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012309238, 0)
-mesh = SubResource("BoxMesh_n04vi")
 
 [node name="UpperRightLeg" type="MeshInstance3D" parent="CollisionShape3D/Visuals" unique_id=44891646]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225, -0.25, 0)

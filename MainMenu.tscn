@@ -74,6 +74,3 @@ text = "Join a Game"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_i26rj")
-
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HostButton" to="." method="_host"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinButton" to="." method="_join"]

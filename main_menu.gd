@@ -1,6 +1,6 @@
 extends Control
 
-const GAME_SCENE := "res://Game3D.tscn"
+const GAME_SCENE := "res://level_1.tscn"
 
 @onready var ip_input: LineEdit = $CenterContainer/VBoxContainer/IPInput
 @onready var status_label: Label = $CenterContainer/VBoxContainer/StatusLabel
@@ -17,14 +17,13 @@ func _ready() -> void:
 
 func _host() -> void:
 	var peer := ENetMultiplayerPeer.new()
-	var error := peer.create_server(7000, 8)
-	if error != OK:
-		status_label.text = "Host error: %s" % error
+	var err := peer.create_server(7000, 8)
+	if err != OK:
+		status_label.text = "Host failed: " + str(err)
 		return
 
 	multiplayer.multiplayer_peer = peer
-	status_label.text = "Hosting..."
-	_go_to_game()
+	status_label.text = "Waiting for guest..."
 
 func _join() -> void:
 	var peer := ENetMultiplayerPeer.new()

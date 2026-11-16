@@ -20,6 +20,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var charge_bar: ProgressBar = $CanvasLayer/ChargeBar 
 @onready var crosshair: ColorRect = $CanvasLayer/CenterContainer/Crosshair
+@onready var menu = get_tree().get_first_node_in_group("main_menu")
 
 var color_default = Color(1, 1, 1, 0.5)
 var color_hover = Color(0, 1, 1, 1)
@@ -27,10 +28,17 @@ var color_hover = Color(0, 1, 1, 1)
 var held_ball: RigidBody3D = null
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	charge_bar.hide()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if menu != null and menu.visible:
+		return
+	if event is InputEventMouseButton and event.pressed:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	elif event.is_action_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)

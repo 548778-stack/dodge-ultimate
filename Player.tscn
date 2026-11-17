@@ -52,3 +52,7 @@ custom_minimum_size = Vector2(6, 6)
 layout_mode = 2
 mouse_filter = 2
 color = Color(1, 0, 0, 1)
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1232629296]
+offset_right = 104.0
+offset_bottom = 23.0

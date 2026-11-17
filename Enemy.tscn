@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c7l1amhvirbdx"]
+
+[ext_resource type="Script" uid="uid://6f5u3gostuy3" path="res://enemy.gd" id="1_tt7e2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqquq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tt7e2"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gqquq"]
+material = SubResource("StandardMaterial3D_tt7e2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tt7e2"]
+size = Vector3(1, 1.8598328, 1)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1436146039]
+script = ExtResource("1_tt7e2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1966790885]
+shape = SubResource("CapsuleShape3D_gqquq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1620061825]
+mesh = SubResource("CapsuleMesh_gqquq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1465528661]
+
+[node name="HoldPosition" type="Marker3D" parent="." unique_id=915925379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39829445, 0, 0.49993396)
+
+[node name="PickUpArea" type="Area3D" parent="." unique_id=553782569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14426184, 1.0207043)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpArea" unique_id=1505541201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07255554, 0)
+shape = SubResource("BoxShape3D_tt7e2")

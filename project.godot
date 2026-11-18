@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [global_group]
 
 floating_lights=""
+player=""
 
 [input]
 

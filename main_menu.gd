@@ -61,3 +61,11 @@ func _on_server_disconnected() -> void:
 func hide_menu() -> void:
 	hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+func _on_start_game_pressed() -> void:
+	print("presssed")
+	hide()
+
+
+func _on_start_button_pressed() -> void:
+	pass # Replace with function body.

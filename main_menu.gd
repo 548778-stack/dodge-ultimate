@@ -2,15 +2,15 @@ extends Control
 
 const GAME_SCENE := "res://level_1.tscn"
 
-@onready var ip_input: LineEdit = $CenterContainer/VBoxContainer/IPInput
-@onready var status_label: Label = $CenterContainer/VBoxContainer/StatusLabel
-@onready var ip_label: Label = $CenterContainer/VBoxContainer/IPLabel
+@onready var ip_input: LineEdit = $CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/IPInput
+@onready var status_label: Label = $CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatusLabel
+@onready var ip_label: Label = $CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/IPLabel
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	ip_label.text = "Your Local IP: " + _get_local_ip()
-	$CenterContainer/VBoxContainer/HostButton.pressed.connect(_host)
-	$CenterContainer/VBoxContainer/JoinButton.pressed.connect(_join)
+	$CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HostButton.pressed.connect(_host)
+	$CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/JoinButton.pressed.connect(_join)
 	multiplayer.connected_to_server.connect(_on_connected)
 	multiplayer.connection_failed.connect(_on_connection_failed)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)

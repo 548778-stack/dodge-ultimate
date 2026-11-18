@@ -5,7 +5,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gqquq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tt7e2"]
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0.98039216, 0.30980393, 0.27058825, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gqquq"]
 material = SubResource("StandardMaterial3D_tt7e2")
@@ -54,19 +54,19 @@ shape = SubResource("BoxShape3D_tt7e2")
 [node name="BallDetectionArea" type="Area3D" parent="." unique_id=960952184]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BallDetectionArea" unique_id=1725876078]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2503662, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0008472204, 3.2238631, 0.009981036)
 shape = SubResource("BoxShape3D_s7bn3")
 
 [node name="Head" type="Node3D" parent="." unique_id=1440917691]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Head" unique_id=1347121030]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6222724, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6529485, 0)
 mesh = SubResource("CylinderMesh_tt7e2")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Head" unique_id=1873740954]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11661698, 0.47287077, 0.5027921)
+transform = Transform3D(1, 0, 0, 0, 0.21306312, -0.97703844, 0, 0.97703844, 0.21306312, -0.062467232, 0.47287077, 0.5027921)
 mesh = SubResource("CapsuleMesh_tt7e2")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Head" unique_id=56432190]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12254587, 0.47287077, 0.5027921)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08751944, 0.47287077, 0.5027921)
 mesh = SubResource("CapsuleMesh_tt7e2")

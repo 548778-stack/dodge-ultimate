@@ -260,10 +260,10 @@ spot_angle = 90.0
 environment = SubResource("Environment_ihfcg")
 
 [node name="Player" parent="." unique_id=1058905890 groups=["player"] instance=ExtResource("5_5hph3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 1.4240527, 0)
 
 [node name="Enemy" parent="." unique_id=1436146039 instance=ExtResource("6_5hph3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.429539, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.429539, 1.5818791, 0)
 player_path = NodePath("../Player")
 divider_x = 0.25
 

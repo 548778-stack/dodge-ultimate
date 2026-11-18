@@ -33,14 +33,6 @@ var held_ball: RigidBody3D = null
 @onready var charge_bar: ProgressBar = $CanvasLayer/ChargeBar
 @onready var crosshair: ColorRect = $CanvasLayer/CenterContainer/Crosshair
 
-var color_default := Color(1, 1, 1, 0.5)
-var color_hover := Color(0, 1, 1, 1)
-var held_ball: RigidBody3D = null
-
-func _enter_tree() -> void:
-	set_multiplayer_authority(int(name))
-
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	charge_bar.hide()
@@ -75,8 +67,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not is_multiplayer_authority():
-		return
 	if global_position.y < -20.0:
 		lost.emit()
 		set_physics_process(false) 

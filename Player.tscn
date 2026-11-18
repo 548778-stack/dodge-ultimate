@@ -51,8 +51,8 @@ grow_vertical = 2
 custom_minimum_size = Vector2(6, 6)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.6085662, 0.6011666, 0, 1)
+color = Color(1, 0, 0, 1)
 
-[node name="Timer" type="Timer" parent="CanvasLayer" unique_id=2054630698]
-wait_time = 600.0
-autostart = true
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1232629296]
+offset_right = 104.0
+offset_bottom = 23.0

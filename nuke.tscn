@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bjfltyvlosjgp"]
+
+[ext_resource type="Script" uid="uid://b84b88pv360hq" path="res://nuke.gd" id="1_tceaf"]
+
+[node name="Nuke" type="Node3D" unique_id=1940553469]
+script = ExtResource("1_tceaf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1836120125]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2042393969]
+omni_range = 20.0
+
+[node name="Timer" type="Timer" parent="." unique_id=2087784429]
+wait_time = 2.0
+one_shot = true

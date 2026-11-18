@@ -1,5 +1,15 @@
 extends CharacterBody3D
 
+signal lost
+
+var has_lost := false
+
+func lose() -> void:
+	if has_lost:
+		return
+	has_lost = true
+	lost.emit()
+
 @export var speed: float = 8.0
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.003
@@ -23,9 +33,7 @@ var color_default := Color(1, 1, 1, 0.5)
 var color_hover := Color(0, 1, 1, 1)
 var held_ball: RigidBody3D = null
 
-
 func _enter_tree() -> void:
-	# The player node must be named with its peer ID (for example, "1" or "123").
 	set_multiplayer_authority(int(name))
 
 
@@ -77,6 +85,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
+		return
+	if global_position.y < -20.0:
+		lost.emit()
+		set_physics_process(false) 
 		return
 
 	if not is_on_floor():

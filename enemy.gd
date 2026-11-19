@@ -12,10 +12,10 @@ extends CharacterBody3D
     "physics/3d/default_gravity"
 )
 
-@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var hold_position: Marker3D = $HoldPosition
-@onready var pickup_area: Area3D = $PickUpArea
-@onready var detection_area: Area3D = $BallDetectionArea
+@onready var navigation_agent: NavigationAgent3D = get_node_or_null("NavigationAgent3D")
+@onready var hold_position: Marker3D = get_node_or_null("HoldPosition")
+@onready var pickup_area: Area3D = get_node_or_null("PickUpArea")
+@onready var detection_area: Area3D = get_node_or_null("BallDetectionArea")
 @onready var player: Node3D = get_node_or_null(player_path) as Node3D
 
 var carried_ball: RigidBody3D
@@ -24,9 +24,25 @@ var throw_timer: float = 0.0
 
 
 func _ready() -> void:
-	detection_area.body_entered.connect(_on_detection_body_entered)
-	detection_area.body_exited.connect(_on_detection_body_exited)
-	pickup_area.body_entered.connect(_on_pickup_body_entered)
+	if is_instance_valid(detection_area):
+		detection_area.body_entered.connect(_on_detection_body_entered)
+		detection_area.body_exited.connect(_on_detection_body_exited)
+	else:
+		push_error("Enemy: BallDetectionArea node is missing.")
+
+	if is_instance_valid(pickup_area):
+		pickup_area.body_entered.connect(_on_pickup_body_entered)
+	else:
+		push_error("Enemy: PickUpArea node is missing.")
+
+	if not is_instance_valid(navigation_agent):
+		push_error("Enemy: NavigationAgent3D node is missing.")
+
+	if not is_instance_valid(hold_position):
+		push_error("Enemy: HoldPosition node is missing.")
+
+	if not is_instance_valid(player):
+		push_warning("Enemy: Set player_path to the Player node in the Inspector.")
 
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +52,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0.0
 
 	if is_instance_valid(carried_ball):
-		carried_ball.global_position = hold_position.global_position
+		if is_instance_valid(hold_position):
+			carried_ball.global_position = hold_position.global_position
+
 		velocity.x = 0.0
 		velocity.z = 0.0
 
@@ -46,17 +64,17 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 		return
-	carried_ball = null
+	else:
+		carried_ball = null
 
-	# Forget balls that were removed or have crossed onto the player's side.
 	for i in range(detected_balls.size() - 1, -1, -1):
 		var ball := detected_balls[i]
-		if not is_instance_valid(ball) or ball.global_position.x >= divider_x:
+		if not is_instance_valid(ball) or not ball.is_inside_tree() or ball.global_position.x >= divider_x:
 			detected_balls.remove_at(i)
 
 	var target := _get_nearest_ball()
 
-	if target == null:
+	if target == null or not is_instance_valid(navigation_agent):
 		velocity.x = 0.0
 		velocity.z = 0.0
 		move_and_slide()
@@ -82,7 +100,7 @@ func _get_nearest_ball() -> RigidBody3D:
 	var closest_distance := INF
 
 	for ball in detected_balls:
-		if not is_instance_valid(ball):
+		if not is_instance_valid(ball) or not ball.is_inside_tree():
 			continue
 
 		var distance := global_position.distance_squared_to(ball.global_position)
@@ -106,12 +124,13 @@ func _on_detection_body_exited(body: Node3D) -> void:
 
 
 func _on_pickup_body_entered(body: Node3D) -> void:
-	if carried_ball != null or not body is RigidBody3D:
+	if is_instance_valid(carried_ball):
+		return
+	if not body is RigidBody3D or not is_instance_valid(hold_position):
 		return
 
 	var ball := body as RigidBody3D
 
-	# Only pick up balls on the enemy's side.
 	if ball.global_position.x >= divider_x:
 		return
 
@@ -131,6 +150,8 @@ func can_detect_player() -> bool:
 func throw_ball_at_player() -> void:
 	if not is_instance_valid(carried_ball) or not is_instance_valid(player):
 		return
+	if not is_instance_valid(hold_position):
+		return
 
 	throw_timer = 0.0
 
@@ -138,13 +159,16 @@ func throw_ball_at_player() -> void:
 	carried_ball = null
 	detected_balls.erase(ball_to_throw)
 
-	# Move the ball out of the HoldPosition before applying physics.
-	ball_to_throw.reparent(get_tree().current_scene, true)
+	var level := get_tree().current_scene
+	if level == null:
+		return
+
+	ball_to_throw.reparent(level, true)
 	ball_to_throw.global_position = hold_position.global_position
 	ball_to_throw.freeze = false
 
 	var throw_direction := player.global_position - ball_to_throw.global_position
-	throw_direction.y += 1.0 # Aim slightly upward.
+	throw_direction.y += 1.0
 	throw_direction = throw_direction.normalized()
 
 	var final_force: float = lerpf(min_throw_force, max_throw_force, throw_strength)

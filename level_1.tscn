@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://r4tyn7qgg1np" path="res://level_1.gd" id="1_hbghi"]
 [ext_resource type="PackedScene" uid="uid://hxmylvmbk4la" path="res://NeonCircleShape.tscn" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://cihd1td4k5ewq" path="res://NeonSquareShape.tscn" id="4_rka8t"]
-[ext_resource type="PackedScene" uid="uid://bge0fgpvrh8k" path="res://player.tscn" id="5_5hph3"]
+[ext_resource type="PackedScene" uid="uid://bge0fgpvrh8k" path="res://Player.tscn" id="5_5hph3"]
 [ext_resource type="PackedScene" uid="uid://p0m17yfj4cct" path="res://NeonTriangleShape.tscn" id="5_rka8t"]
 [ext_resource type="PackedScene" uid="uid://c7l1amhvirbdx" path="res://Enemy.tscn" id="6_5hph3"]
+[ext_resource type="PackedScene" uid="uid://d4eqvoadb8l1r" path="res://music_player.tscn" id="7_j7kpp"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_5hph3"]
 vertices = PackedVector3Array(-22.125002, 0.54938114, -12, -22.125002, 0.29938114, 12, 22.124998, 0.29938114, 12, 22.124998, 0.54938114, -12)
@@ -263,5 +264,13 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 
 
 [node name="Enemy" parent="." unique_id=1436146039 instance=ExtResource("6_5hph3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.429539, 0, 0)
+min_throw_force = 10.0
+max_throw_force = 35.0
+throw_strength = 0.7
+throw_interval = 2.0
 player_path = NodePath("../Player")
 divider_x = 0.25
+speed = 4.0
+
+[node name="MusicPlayer" parent="." unique_id=1734508322 instance=ExtResource("7_j7kpp")]
+volume_db = 0.0

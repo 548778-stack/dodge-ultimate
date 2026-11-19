@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4eqvoadb8l1r"]
+
+[ext_resource type="AudioStream" uid="uid://2pu060yrv2q3" path="res://alexzavesa-retro-synthwave-short-version-636333.mp3" id="1_fvyft"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" unique_id=1734508322]
+stream = ExtResource("1_fvyft")
+volume_db = 0.1
+autoplay = true
+parameters/looping = true

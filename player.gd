@@ -1,5 +1,15 @@
 extends CharacterBody3D
 
+signal lost
+
+var has_lost := false
+
+func lose() -> void:
+	if has_lost:
+		return
+	has_lost = true
+	lost.emit()
+
 @export var speed: float = 8.0
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.003
@@ -22,7 +32,6 @@ var held_ball: RigidBody3D = null
 @onready var hold_position: Node3D = $CameraPivot/Camera3D/HoldPosition
 @onready var charge_bar: ProgressBar = $CanvasLayer/ChargeBar
 @onready var crosshair: ColorRect = $CanvasLayer/CenterContainer/Crosshair
-
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -58,6 +67,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if global_position.y < -20.0:
+		lost.emit()
+		set_physics_process(false) 
+		return
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 

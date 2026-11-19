@@ -1,0 +1,210 @@
+[gd_scene format=3 uid="uid://dnckn15c64gyj"]
+
+[ext_resource type="Script" uid="uid://cq1gm43nj4qnb" path="res://main_menu.gd" id="1_i26rj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61cf8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqjrg"]
+bg_color = Color(0.5224602, 0.21057549, 0.5038016, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2xy7"]
+bg_color = Color(0.99999994, 0.22082382, 0.7021721, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7a2f"]
+bg_color = Color(0.15294118, 0.40784314, 0.5294118, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.8, 0.8, 1)
+shadow_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fimr5"]
+bg_color = Color(0, 0.75686276, 0.8117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiy7p"]
+bg_color = Color(0.15294118, 0.40784314, 0.5294118, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.8, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7cqb"]
+bg_color = Color(0, 0.75686276, 0.8117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31qfy"]
+bg_color = Color(0.15294118, 0.40784314, 0.5294118, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.8, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r1g0"]
+bg_color = Color(0.15294118, 0.40784314, 0.5294118, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.8, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afec1"]
+bg_color = Color(0, 0.75686276, 0.8117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwfq2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoqlk"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i26rj"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0, 1, 1)
+
+[node name="MainMenu" type="Control" unique_id=984302018]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i26rj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=318003118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1218621312]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuFrame" type="Control" parent="CenterContainer" unique_id=1783775262]
+custom_minimum_size = Vector2(460, 600)
+layout_mode = 2
+
+[node name="GlowFrame" type="Panel" parent="CenterContainer/MenuFrame" unique_id=1302737300]
+custom_minimum_size = Vector2(300, 600)
+layout_mode = 0
+offset_left = 71.0
+offset_right = 383.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_61cf8")
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/MenuFrame" unique_id=1438503883]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/MenuFrame/CenterContainer" unique_id=1362570989]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer" unique_id=937203464]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer" unique_id=284273618]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=506973456]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72156864, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.85490197, 0, 0.8901961, 1)
+text = "                  starfall
+               dodgeball"
+uppercase = true
+
+[node name="Label2" type="Label" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1845443488]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+text = "enter the neon frontier"
+uppercase = true
+
+[node name="StartButton" type="Button" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=326367225]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_cqjrg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e2xy7")
+text = "Start Game"
+
+[node name="HostButton" type="Button" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=97411222]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_h7a2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fimr5")
+text = "Host a Game"
+
+[node name="JoinButton" type="Button" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=92176276]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_eiy7p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u7cqb")
+text = "Join a Game"
+
+[node name="OptionButton" type="Button" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1380227392]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_31qfy")
+text = "Settings
+"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1083050225]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7r1g0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_afec1")
+text = "Quit"
+
+[node name="IPLabel" type="Label" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1347741132]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_iwfq2")
+
+[node name="IPInput" type="LineEdit" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1980389519]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_qoqlk")
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1222694972]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_i26rj")
+
+[connection signal="pressed" from="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="hide_menu"]
+[connection signal="pressed" from="CenterContainer/MenuFrame/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

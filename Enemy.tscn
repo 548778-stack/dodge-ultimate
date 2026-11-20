@@ -11,10 +11,10 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_tt7e2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tt7e2"]
-size = Vector3(1, 1.8598328, 1.6005249)
+size = Vector3(1.8, 1.86, 1.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s7bn3"]
-size = Vector3(20, 8.525, 20)
+size = Vector3(50, 8.525, 50)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tt7e2"]
 height = 0.2
@@ -24,14 +24,19 @@ radius = 0.05
 height = 0.1
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1436146039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93931407, 0.13121796)
 script = ExtResource("1_tt7e2")
+player_path = null
+divider_x = null
+speed = null
 min_throw_force = null
 max_throw_force = null
 throw_strength = null
 throw_interval = null
-player_path = null
-divider_x = null
-speed = null
+aim_height_offset = null
+dodge_speed = null
+dodge_duration = null
+dodge_cooldown = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1966790885]
 shape = SubResource("CapsuleShape3D_gqquq")
@@ -42,13 +47,11 @@ mesh = SubResource("CapsuleMesh_gqquq")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1465528661]
 
 [node name="HoldPosition" type="Marker3D" parent="." unique_id=915925379]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45985568, 0, 0.7522011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58770263, 0, -0.8990861)
 
 [node name="PickUpArea" type="Area3D" parent="." unique_id=553782569]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14426184, 1.0207043)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpArea" unique_id=1505541201]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07255554, 0.26602173)
 shape = SubResource("BoxShape3D_tt7e2")
 
 [node name="BallDetectionArea" type="Area3D" parent="." unique_id=960952184]
@@ -58,6 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2503662, 0)
 shape = SubResource("BoxShape3D_s7bn3")
 
 [node name="Head" type="Node3D" parent="." unique_id=1440917691]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Head" unique_id=1347121030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6222724, 0)

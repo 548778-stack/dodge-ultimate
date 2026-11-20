@@ -26,6 +26,10 @@ debug_shape_thickness = 5
 [node name="HoldPosition" type="Node3D" parent="CameraPivot/Camera3D" unique_id=292621595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37352246, -0.0916363, -0.891404)
 
+[node name="AimRay" type="RayCast3D" parent="CameraPivot/Camera3D" unique_id=387776301]
+transform = Transform3D(1, 0, 0, 0, 0.9999619, -0.008726535, 0, 0.008726535, 0.9999619, 0, 0, 0)
+target_position = Vector3(0, -1, -100)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1663450898]
 
 [node name="ChargeBar" type="ProgressBar" parent="CanvasLayer" unique_id=1766090979]
